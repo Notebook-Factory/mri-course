@@ -1,0 +1,907 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RF Pulse design &#8212; MRI online course</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Extra" href="../extra.html" />
+    <link rel="prev" title="DTI data processing" href="../03/main-3.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">MRI online course</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Chapter 1
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01/main-1.html">
+   Sensitivity encoded MRI reconstruction
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Chapter 2
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02/main-2.html">
+   Magnitude and phase data processing for multi-TE gradient-echo MRI
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Chapter 3
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/main-3.html">
+   DTI data processing
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Chapter 4
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   RF Pulse design
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  External resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../extra.html">
+   Complete files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/Notebook-Factory/mri-course">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/04/main-4.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Notebook-Factory/mri-course"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Notebook-Factory/mri-course/issues/new?title=Issue%20on%20page%20%2F04/main-4.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/Notebook-Factory/mri-course/edit/main/04/main-4.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Notebook-Factory/mri-course/main?urlpath=lab/tree/04/main-4.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sinc-rf-pulse-design">
+   Sinc RF pulse Design
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#design-a-sinc-rf-pulse-with-time-bandwidth-product-t-delta-f-12-duration-4-milliseconds-and-flip-angle-30-degrees">
+     Design a sinc RF pulse with time-bandwidth product (
+     <span class="math notranslate nohighlight">
+      \(T * \Delta f\)
+     </span>
+     ) = 12, duration 4 milliseconds and flip angle = 30 degrees.
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-time-bandwidth-product">
+       Q1: Time-Bandwidth product
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slice-profile-calculation">
+   Slice profile calculation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compute-the-slice-profile-of-the-sinc-pulse-assuming-a-slice-select-gradient-of-g-0-5-g-cm-what-is-the-theoretical-slice-thickness">
+     Compute the slice profile of the sinc pulse assuming a slice select gradient of G = 0.5 G/cm . What is the theoretical slice thickness ?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#effect-of-b1-t-on-the-longitudinal-magnetization-m-z">
+     Effect of B1(t) on the longitudinal magnetization
+     <span class="math notranslate nohighlight">
+      \(M_z\)
+     </span>
+     .
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-we-had-instead-used-a-90-o-tip-angle-rf-pulse-then-the-resultant-longitudinal-magnetization-would-be">
+     If we had instead used a
+     <span class="math notranslate nohighlight">
+      \(90^o\)
+     </span>
+     tip angle RF pulse, then the resultant longitudinal magnetization would be:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-slice-profile">
+       Q2: Slice Profile
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#windowed-sinc-rf-pulse-design">
+   Windowed Sinc RF pulse Design
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modify-the-sinc-rf-pulse-from-the-previous-module-to-design-a-hamming-window-sinc-and-plot-its-slice-profile">
+     Modify the sinc RF pulse from the previous module to design a Hamming window Sinc and plot its slice profile
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-window-functions">
+       Q3: Window functions
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-band-rf-pulse-design">
+   Multi-band RF pulse Design
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hadamard-encoding">
+     Hadamard encoding
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modulate-the-windowed-sinc-pulse-previously-designed-by-sin-and-cos-functions-and-plot-their-slice-profiles">
+       Modulate the windowed sinc pulse previously designed by sin( ) and cos( ) functions and plot their slice profiles.
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decoding-slices-acquired-using-hadamard-rf-encoding">
+     Decoding slices acquired using Hadamard RF encoding
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="rf-pulse-design">
+<h1>RF Pulse design<a class="headerlink" href="#rf-pulse-design" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">Mahesh</span> <span class="pre">Keerthivasan</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">2018-04-14</span></code></p>
+<p><strong>BME 639: Magnetic Resonance Imaging</strong> <br>
+<em>The University of Arizona, Spring 2018</em></p>
+<ul class="simple">
+<li><p><em>Python</em> code demonstration for design of simple Sinc RF pulses and simulations of slice profiles</p></li>
+<li><p>Makes use of functions from the RF pulse design MATLAB toolbox written by Dr. John Pauly, Stanford University</p></li>
+<li><p>Subset of toolbox has been ported to Python 3 and is located in the lib/ directory</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lib.slr</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">lib.utils</span> <span class="kn">import</span> <span class="n">rfscaleg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sinc-rf-pulse-design">
+<h2>Sinc RF pulse Design<a class="headerlink" href="#sinc-rf-pulse-design" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Recall that a sinc pulse is defined in terms of its bandwidth <span class="math notranslate nohighlight">\(\Delta f\)</span>, duration <span class="math notranslate nohighlight">\(T\)</span> and amplitude <span class="math notranslate nohighlight">\(A\)</span>. The amplitude <span class="math notranslate nohighlight">\(A\)</span> is calculated for the desired flip angle.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(b1(t)= \left\{
+                \begin{array}{ll}
+                  A sinc(\pi \Delta f (t-T/2)), if 0 \leq t \leq T/2\\
+                  0, otherwise 
+                \end{array}
+              \right.\)</span></p>
+<ul class="simple">
+<li><p>And the <span class="math notranslate nohighlight">\(sinc()\)</span> function is defined as</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(sinc(t) = \frac{sin(\pi t)}{\pi t}\)</span></p>
+<div class="section" id="design-a-sinc-rf-pulse-with-time-bandwidth-product-t-delta-f-12-duration-4-milliseconds-and-flip-angle-30-degrees">
+<h3>Design a sinc RF pulse with time-bandwidth product (<span class="math notranslate nohighlight">\(T * \Delta f\)</span>) = 12, duration 4 milliseconds and flip angle = 30 degrees.<a class="headerlink" href="#design-a-sinc-rf-pulse-with-time-bandwidth-product-t-delta-f-12-duration-4-milliseconds-and-flip-angle-30-degrees" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Start by implementing the sinc function assuming amplitude <span class="math notranslate nohighlight">\(A = 1\)</span>. Then scale the RF pulse to the desired flip angle.</p></li>
+<li><p>Assume the RF pulse has 256 points</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">256</span> <span class="c1">#Number of samples in RF pulse</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># Duration in msec</span>
+<span class="n">tbw</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1">#Time bandwidth</span>
+<span class="n">bw</span> <span class="o">=</span> <span class="n">tbw</span> <span class="o">/</span> <span class="n">T</span> <span class="c1"># bandwidth in kHz </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bandwidth of RF pulse: &#39;</span><span class="p">,</span> <span class="n">bw</span><span class="p">,</span> <span class="s1">&#39;kHz&#39;</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mi">1</span> 
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">sinc</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">bw</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T</span><span class="o">/</span><span class="mi">2</span><span class="p">)),(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">bw</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">T</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bandwidth of RF pulse:  3.0 kHz
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Flip angle of RF pulse defined as the area under the envelope of B1(t)</p>
+<ul>
+<li><p>Scale the RF pulse to the desired flip angle: sum of RF pulse amplitudes should be <span class="math notranslate nohighlight">\(\theta\)</span> (radians)</p></li>
+<li><p>We could also scale the RF amplitude to Gaus</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scale the RF to desired flip angle</span>
+<span class="n">thetaDeg</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">thetaDeg</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span> <span class="c1">#radians</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="n">sinc</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sinc</span><span class="p">)</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">theta</span>
+
+<span class="c1"># Plot the RF</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">b1</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude (a.u.)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;RF Pulse with flip angle </span><span class="si">%1.3f</span><span class="s1"> radians&#39;</span> <span class="o">%</span><span class="k">theta</span>)
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Scale RF to Gaus</span>
+<span class="n">b1Gaus</span> <span class="o">=</span> <span class="n">rfscaleg</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Plot the RF</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">b1Gaus</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude (Gaus)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;RF Pulse Scaled in Gaus with flip angle </span><span class="si">%1.3f</span><span class="s1"> radians&#39;</span> <span class="o">%</span><span class="k">theta</span>)
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/main-4_8_0.png" src="../_images/main-4_8_0.png" />
+<img alt="../_images/main-4_8_1.png" src="../_images/main-4_8_1.png" />
+</div>
+</div>
+<div class="section" id="q1-time-bandwidth-product">
+<h4>Q1: Time-Bandwidth product<a class="headerlink" href="#q1-time-bandwidth-product" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>What happens when we increase the time-bandwidth product while keeping the same duration ( <span class="math notranslate nohighlight">\(T = 4 ms\)</span>) ? Generate the Sinc pulse waveform for TBW = 4,6,8</p></li>
+<li><p>Is there a relationship between the time-bandwidth product and the number of sinc side lobes ?</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="slice-profile-calculation">
+<h2>Slice profile calculation<a class="headerlink" href="#slice-profile-calculation" title="Permalink to this headline">¶</a></h2>
+<p>Use the SLR transform to calculate the transverse magnetization due to RF pulse and slice selection gradients. This will allow us to look at the distribution of flip angles across the slice</p>
+<p>Forward SLR transform:
+* calculate the complex polynomials for a given RF pulse
+* calculate transverse and longitudinal magnetization using these polynomials</p>
+<div class="section" id="compute-the-slice-profile-of-the-sinc-pulse-assuming-a-slice-select-gradient-of-g-0-5-g-cm-what-is-the-theoretical-slice-thickness">
+<h3>Compute the slice profile of the sinc pulse assuming a slice select gradient of G = 0.5 G/cm . What is the theoretical slice thickness ?<a class="headerlink" href="#compute-the-slice-profile-of-the-sinc-pulse-assuming-a-slice-select-gradient-of-g-0-5-g-cm-what-is-the-theoretical-slice-thickness" title="Permalink to this headline">¶</a></h3>
+<p>Thickness of excited slice is  <span class="math notranslate nohighlight">\(\Delta z = \frac{\Delta f}{\frac{\gamma}{2\pi} G}\)</span></p>
+<p>where, <span class="math notranslate nohighlight">\(\frac{\gamma}{2\pi} G\)</span> is the frequency change per cm induced by the slice selection gardient and has units <span class="math notranslate nohighlight">\(kHz / cm\)</span>. Note that <span class="math notranslate nohighlight">\(\gamma = 2 * \pi * 4.257\)</span> kHz/G.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># slice selection gradient strength in Gaus / cm</span>
+
+<span class="c1"># Expected theoretical slice thickness</span>
+<span class="n">sliceThickness</span> <span class="o">=</span> <span class="n">bw</span> <span class="o">/</span> <span class="p">((</span><span class="mf">4.257</span><span class="o">*</span><span class="n">G</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Theoretical slice thickness: &#39;</span><span class="p">,</span> <span class="n">sliceThickness</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Theoretical slice thickness:  1.4094432699083863
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create vector of spatial positions in cm </span>
+<span class="n">zt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Convert the spatial position vector to a dimensionless normalized frequency vector to be used by SLR</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">zt</span><span class="p">,</span><span class="mf">4.257</span> <span class="o">*</span> <span class="n">G</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Get the complex polynomials from forward SLR transform</span>
+<span class="c1"># Gradient waveform scaled so that (gamma/2*pi)*sum(g) = k in cycles/cm: Assume constant gradient </span>
+<span class="n">gVec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">b1</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">b1</span><span class="p">)</span> 
+
+<span class="c1"># Compute the complex polynomials for the RF pulse</span>
+<span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">abrm</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span><span class="n">gVec</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> 
+
+<span class="c1"># Compute the transver magnetization using these polynomials</span>
+<span class="n">mxy</span> <span class="o">=</span> <span class="n">ab2ex</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># Transverse magnetization gives the distribution of flip angles across the slice</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zt</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mxy</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Slice position (cm)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flip Angle (radians)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Slice profile for RF pulse with flip angle </span><span class="si">%1.3f</span><span class="s1"> radians&#39;</span> <span class="o">%</span><span class="k">theta</span>)
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/main-4_13_0.png" src="../_images/main-4_13_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="effect-of-b1-t-on-the-longitudinal-magnetization-m-z">
+<h3>Effect of B1(t) on the longitudinal magnetization <span class="math notranslate nohighlight">\(M_z\)</span>.<a class="headerlink" href="#effect-of-b1-t-on-the-longitudinal-magnetization-m-z" title="Permalink to this headline">¶</a></h3>
+<p>We can use the forward SLR transform to look at the longitudinal magnetization after a RF pulse. For the <span class="math notranslate nohighlight">\(30^o\)</span> flip angle RF pulse the <span class="math notranslate nohighlight">\(M_z\)</span> component looks like the plot below. Note that <span class="math notranslate nohighlight">\(M_z\)</span> is not zero, due to the smaller tip angle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the longitudinal magnetization using these polynomials</span>
+<span class="n">mz</span> <span class="o">=</span> <span class="n">ab2inv</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zt</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mz</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Slice position (cm)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flip Angle (radians)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Longitudinal Magnetization for RF pulse with flip angle </span><span class="si">%1.3f</span><span class="s1"> radians&#39;</span> <span class="o">%</span><span class="k">theta</span>)
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/main-4_15_0.png" src="../_images/main-4_15_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="if-we-had-instead-used-a-90-o-tip-angle-rf-pulse-then-the-resultant-longitudinal-magnetization-would-be">
+<h3>If we had instead used a <span class="math notranslate nohighlight">\(90^o\)</span> tip angle RF pulse, then the resultant longitudinal magnetization would be:<a class="headerlink" href="#if-we-had-instead-used-a-90-o-tip-angle-rf-pulse-then-the-resultant-longitudinal-magnetization-would-be" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scale the RF to desired flip angle of 90 degree</span>
+<span class="n">b1_90</span> <span class="o">=</span> <span class="p">(</span><span class="n">sinc</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sinc</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span>
+<span class="c1"># Get the Mz component using forward SLR transform </span>
+<span class="n">a_90</span><span class="p">,</span><span class="n">b_90</span> <span class="o">=</span> <span class="n">abrm</span><span class="p">(</span><span class="n">b1_90</span><span class="p">,</span><span class="n">gVec</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> 
+<span class="n">mz_90</span> <span class="o">=</span> <span class="n">ab2inv</span><span class="p">(</span><span class="n">a_90</span><span class="p">,</span><span class="n">b_90</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zt</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mz_90</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Slice position (cm)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flip Angle (radians)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Longitudinal Magnetization for RF pulse with flip angle pi/2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/main-4_17_0.png" src="../_images/main-4_17_0.png" />
+</div>
+</div>
+<div class="section" id="q2-slice-profile">
+<h4>Q2: Slice Profile<a class="headerlink" href="#q2-slice-profile" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>What is the excited slice width ? How does this compare to the theoretical slice thickness</p></li>
+<li><p>We can observe some variations in the flip angle in the passband of the slice profile. However, the mean flip angle seems to be close to the desired value of <span class="math notranslate nohighlight">\(\pi/6\)</span> radians. How does the slice profile change for the different time-bandwidth product pulses from Q1 ?</p></li>
+<li><p>How does the excited slice profile change with change in slice gradient strength (<span class="math notranslate nohighlight">\(G\)</span>) ?</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="windowed-sinc-rf-pulse-design">
+<h2>Windowed Sinc RF pulse Design<a class="headerlink" href="#windowed-sinc-rf-pulse-design" title="Permalink to this headline">¶</a></h2>
+<p>Recall that can use a window function to provide a smooth transition of the slice profile into the stopband. A windowed sinc pulse is defined as</p>
+<p><span class="math notranslate nohighlight">\(
+b1(t)= \left\{
+                \begin{array}{ll}
+                  A [(1-\alpha) + \alpha cos(\pi \frac{\Delta f}{N} (t - T/2))] sinc(\pi \Delta f (t-T/2)), if 0 \leq t \leq T/2\\
+                  0, otherwise 
+                \end{array}
+              \right.
+\)</span></p>
+<p>where, <span class="math notranslate nohighlight">\(N\)</span> is the number of zero-crossings on one side of the sinc main lobe.</p>
+<p>Hamming window: if <span class="math notranslate nohighlight">\(\alpha = 0.46\)</span>
+Hanning window: if <span class="math notranslate nohighlight">\(\alpha = 0.5\)</span></p>
+<div class="section" id="modify-the-sinc-rf-pulse-from-the-previous-module-to-design-a-hamming-window-sinc-and-plot-its-slice-profile">
+<h3>Modify the sinc RF pulse from the previous module to design a Hamming window Sinc and plot its slice profile<a class="headerlink" href="#modify-the-sinc-rf-pulse-from-the-previous-module-to-design-a-hamming-window-sinc-and-plot-its-slice-profile" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Use the same RF pulse parameters: TBW = 4, T = 4ms, and <span class="math notranslate nohighlight">\(\theta = 30\)</span></p></li>
+<li><p>For the slice profile simulation assume G = 0.5 G/cm</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the Hamming window  </span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.46</span>
+<span class="n">wind</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">bw</span><span class="o">/</span><span class="p">(</span><span class="n">tbw</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">T</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="p">))</span>
+
+<span class="c1"># Plot the RF</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">wind</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude (a.u.)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hamming Window function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Create Window sinc function</span>
+<span class="n">sincW</span> <span class="o">=</span> <span class="n">wind</span> <span class="o">*</span> <span class="n">sinc</span>
+
+<span class="c1"># Scale the RF to desired flip angle</span>
+<span class="n">b1W</span> <span class="o">=</span> <span class="n">sincW</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sincW</span><span class="p">)</span>
+<span class="n">b1W</span> <span class="o">=</span> <span class="n">b1W</span> <span class="o">*</span> <span class="n">theta</span>
+
+<span class="c1"># Plot the RF</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">b1W</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude (a.u.)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hamming Window RF Pulse with flip angle </span><span class="si">%1.3f</span><span class="s1"> radians&#39;</span> <span class="o">%</span><span class="k">theta</span>)
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Compute the complex polynomials for the Windowed RF pulse</span>
+<span class="n">aW</span><span class="p">,</span><span class="n">bW</span> <span class="o">=</span> <span class="n">abrm</span><span class="p">(</span><span class="n">b1W</span><span class="p">,</span><span class="n">gVec</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> 
+
+<span class="c1"># Compute the transver magnetization using these polynomials</span>
+<span class="n">mxyW</span> <span class="o">=</span> <span class="n">ab2ex</span><span class="p">(</span><span class="n">aW</span><span class="p">,</span><span class="n">bW</span><span class="p">)</span>
+
+<span class="c1"># Transverse magnetization gives the distribution of flip angles across the slice</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zt</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mxyW</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Slice position (cm)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flip Angle (radians)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Slice profile (flip angle distribution)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">mzW</span> <span class="o">=</span> <span class="n">ab2inv</span><span class="p">(</span><span class="n">aW</span><span class="p">,</span><span class="n">bW</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zt</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mzW</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Slice position (cm)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flip Angle (radians)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Longitudinal Magnetization for Windowed RF pulse with flip angle </span><span class="si">%1.2f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">theta</span>)
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/main-4_21_0.png" src="../_images/main-4_21_0.png" />
+<img alt="../_images/main-4_21_1.png" src="../_images/main-4_21_1.png" />
+<img alt="../_images/main-4_21_2.png" src="../_images/main-4_21_2.png" />
+<img alt="../_images/main-4_21_3.png" src="../_images/main-4_21_3.png" />
+</div>
+</div>
+<div class="section" id="q3-window-functions">
+<h4>Q3: Window functions<a class="headerlink" href="#q3-window-functions" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Create a Hanning window Sinc RF pulse (using <span class="math notranslate nohighlight">\(\alpha = 0.5\)</span>) using the same pulse and gradient parameters.</p></li>
+<li><p>How does the slice profile look ? Which window function would you prefer and why ?</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="multi-band-rf-pulse-design">
+<h2>Multi-band RF pulse Design<a class="headerlink" href="#multi-band-rf-pulse-design" title="Permalink to this headline">¶</a></h2>
+<p>We can simultaneously excite multiple slices by adding a phase to the RF pulse. This would introduce a shift in the slice profile.</p>
+<div class="section" id="hadamard-encoding">
+<h3>Hadamard encoding<a class="headerlink" href="#hadamard-encoding" title="Permalink to this headline">¶</a></h3>
+<p>REF: S. P. Souza, J. Szumowski, C. L. Dumoulin, D. P. Plewes, G. Glover, SIMA: simultaneous multislice acquisition of MR images by Hadamard-encoded excitation. J Comput Assist Tomogr. 1988 Nov-Dec; 12(6): 1026–1030</p>
+<p>One approach to simultaneous multi-slice excitation is modulating the RF pulse separately by a sin() and a cos() function.</p>
+<p><span class="math notranslate nohighlight">\(
+rf1(t) = sinc(\pi \Delta f t) cos(\rho t) \\ 
+rf2(t) = - sinc(\pi \Delta f t) sin(\rho t) 
+\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\rho = 2*pi*\gamma*G_z* z_0\)</span> is the slice offset frequency and <span class="math notranslate nohighlight">\(z_0\)</span> is slice shift</p>
+<p>Each RF pulse excites two slices simultaneously, however the slice profiles have different phase.</p>
+<p>By adding and subtracting the slice profiles from the two RF pulses, we can get the individual slices.</p>
+<div class="section" id="modulate-the-windowed-sinc-pulse-previously-designed-by-sin-and-cos-functions-and-plot-their-slice-profiles">
+<h4>Modulate the windowed sinc pulse previously designed by sin( ) and cos( ) functions and plot their slice profiles.<a class="headerlink" href="#modulate-the-windowed-sinc-pulse-previously-designed-by-sin-and-cos-functions-and-plot-their-slice-profiles" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Let us assume a slice position offset of 5 cm from the isocenter.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Two slice multi-band excitation using Hadamard encoding </span>
+<span class="n">mbFactor</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">z0</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># cm shift in slice position from iso-center</span>
+<span class="n">amplitudeScaling</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># scaling factor for B1(t) to ensure desired flip angle</span>
+
+<span class="c1"># Modulate the RF pulse by a complex exponential and take the real and imaginary parts </span>
+<span class="n">sinc_exp</span> <span class="o">=</span> <span class="n">amplitudeScaling</span> <span class="o">*</span> <span class="n">b1W</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">4.257</span><span class="o">*</span><span class="n">G</span><span class="o">/</span><span class="n">mbFactor</span><span class="o">*</span><span class="n">z0</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">rf1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">sinc_exp</span><span class="p">)</span>
+<span class="n">rf2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">sinc_exp</span><span class="p">)</span>
+
+<span class="c1"># Plot the RF</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">rf1</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude (a.u.)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cos modulated Sinc Pulse&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">rf2</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude (a.u.)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sin modulated Sinc Pulse&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/main-4_25_0.png" src="../_images/main-4_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the individual slice profiles for the two RF pulses</span>
+<span class="n">zt1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">zt1</span><span class="p">,</span><span class="mf">4.257</span> <span class="o">*</span> <span class="n">G</span><span class="o">/</span><span class="n">mbFactor</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+
+<span class="n">a1</span><span class="p">,</span><span class="n">b1</span> <span class="o">=</span> <span class="n">abrm</span><span class="p">(</span><span class="n">rf1</span><span class="p">,</span><span class="n">gVec</span><span class="p">,</span><span class="n">z1</span><span class="p">)</span> 
+<span class="n">mxy1</span> <span class="o">=</span> <span class="n">ab2ex</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span><span class="n">b1</span><span class="p">)</span>
+<span class="n">a2</span><span class="p">,</span><span class="n">b2</span> <span class="o">=</span> <span class="n">abrm</span><span class="p">(</span><span class="n">rf2</span><span class="p">,</span><span class="n">gVec</span><span class="p">,</span><span class="n">z1</span><span class="p">)</span> 
+<span class="n">mxy2</span> <span class="o">=</span> <span class="n">ab2ex</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span><span class="n">b2</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zt1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mxy1</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Slice position (cm)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flip Angle (radians)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Slice profile of cos modulated RF&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zt1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mxy2</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Slice position (cm)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flip Angle (radians)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Slice profile of sin modulated RF&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/main-4_26_0.png" src="../_images/main-4_26_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="decoding-slices-acquired-using-hadamard-rf-encoding">
+<h3>Decoding slices acquired using Hadamard RF encoding<a class="headerlink" href="#decoding-slices-acquired-using-hadamard-rf-encoding" title="Permalink to this headline">¶</a></h3>
+<p>When pulse sequences use Hadamard encoding, two sets of acquisitons are performed using RF1 and RF2. The cos modulated RF excites the two slices in phase, while the sin modulated RF produces out of phase excitation.</p>
+<p>The code below shows how the encoded slices look for a 2 slice Hadamard encoding for cardiac imaging.</p>
+<p>The individual slices can be recovered by performing an inverse Hadamard transform;
+* add and subtract the two encodes to decode the individual slices
+* scale the decoded images appropriately</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load Hadamard encoded cardiac data</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">io</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;./data/hadamard_encodes.mat&#39;</span><span class="p">))</span>
+<span class="n">encode</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;encodeH&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Data dimensions: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">encode</span><span class="p">))</span>
+
+<span class="c1"># Display the two encode </span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">encode</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]),</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Acquired Hadamard encode 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">encode</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]),</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Acquired Hadamard encode 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Perform Hadamard decoding </span>
+<span class="n">slc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">encode</span><span class="p">))</span>
+<span class="n">slc</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">encode</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">encode</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">slc</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">encode</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">encode</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Display the two acquired slices</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">slc</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]),</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Decoded slice 1&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">slc</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]),</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Decoded slice 2&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data dimensions:  (182, 192, 2)
+</pre></div>
+</div>
+<img alt="../_images/main-4_28_1.png" src="../_images/main-4_28_1.png" />
+<img alt="../_images/main-4_28_2.png" src="../_images/main-4_28_2.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "Notebook-Factory/mri-course",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../03/main-3.html" title="previous page">DTI data processing</a>
+    <a class='right-next' id="next-link" href="../extra.html" title="next page">Extra</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By <a href="https://github.com/Notebook-Factory">Notebook-factory team</a><br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

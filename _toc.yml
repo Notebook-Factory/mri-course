@@ -1,0 +1,30 @@
+- file: intro
+  title: "Introduction" 
+
+- part: "Chapter 1"
+  chapters:
+  - file: 01/main-1
+    title: "Sensitivity encoded MRI reconstruction"
+
+- part: "Chapter 2"
+  chapters:
+  - file: 02/main-2
+    title: "Magnitude and phase data processing for multi-TE gradient-echo MRI"
+
+- part: "Chapter 3"
+  chapters:
+  - file: 03/main-3
+    title: "DTI data processing"
+
+- part: "Chapter 4"
+  chapters:
+  - file: 04/main-4
+    title: "RF Pulse design"
+
+
+- part: "External resources"
+  chapters:
+  - file: extra
+    title: "Complete files" 
+  - url: https://github.com/Notebook-Factory/mri-course
+    title: "GitHub repository" 
