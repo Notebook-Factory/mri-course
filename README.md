@@ -1,6 +1,6 @@
 # MRI online course
 
-Welcome to an interactive **MRI course**! This [online course]() is divided in 4 chapters (for more info see 
+Welcome to an interactive **MRI course**! This [online course](https://notebook-factory.github.io/mri-course/intro.html) is divided in 4 chapters (for more info see 
 <font> <b> 📕 Course chapters </b> </font>) that demonstrate different MRI techniques and display the results
 in *Jupyer notebooks*. The notebooks are written in *Julia* (1.4.1) and *Python* (3.7).  
 
@@ -71,7 +71,7 @@ docker run -it --rm -p 8888:8888 `PASTE IMAGE ID HERE` jupyter notebook --ip 0.0
 <details><summary><font><b>☁️ Run on the cloud </b> </font> </summary><br>
 
 You can use <code> Live Code </code> or <code>Launch in Binder</code> buttons 
-at the top of each page of the <a href="">Jupyter Book</a>.
+at the top of each page of the <a href="https://notebook-factory.github.io/mri-course/intro.html">Jupyter Book</a>.
 
 Alternatively, you can start a Binder session by clicking the badge below: 
 
