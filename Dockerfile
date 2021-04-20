@@ -115,7 +115,7 @@ RUN cd $HOME/work;\
     jupyter labextension install --minimize=False jupyterlab-sos; \
     git clone https://github.com/Notebook-Factory/mri-course.git; \
     cd mri-course;\
-    chmod -R 777 $HOME/work/course
+    chmod -R 777 $HOME/work/mri-course
     
 WORKDIR $HOME/work/mri-course
 
