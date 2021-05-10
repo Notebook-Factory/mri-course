@@ -80,13 +80,6 @@ Alternatively, you can start a Binder session by clicking the badge below:
 ---
 </details>
 
-<details><summary><font><b>▶️YouTube guide </b> </font> </summary><br>
-
-Insert video...
-
---- 
-</details>
-
 <br>
 
 <p align="center">
