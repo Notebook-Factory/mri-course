@@ -113,7 +113,7 @@ RUN cd $HOME/work;\
                 nbconvert; \
     python -m sos_notebook.install; \
     jupyter labextension install --minimize=False jupyterlab-sos; \
-    git clone https://github.com/Notebook-Factory/mri-course.git; \
+    git clone https://github.com/Notebook-Factory/mri-course.git;  \
     cd mri-course;\
     chmod -R 777 $HOME/work/mri-course
     
