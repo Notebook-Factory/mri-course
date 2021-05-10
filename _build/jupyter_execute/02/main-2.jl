@@ -2,6 +2,9 @@
 `Nan-kuei Chen`  
 `2021-04-15` 
 
+**BME 639: Magnetic Resonance Imaging** <br> 
+*The University of Arizona*
+
 * __The goal is to demonstrate post-processing methods commonly used for multi-TE gradient-echo imaging data__:
     1. exponential fit of magnitude signals
     2. mapping of magnetic field inhomogeneities (i.e., frequency offset) using the phase signals

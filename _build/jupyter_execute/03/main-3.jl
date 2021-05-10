@@ -2,6 +2,9 @@
 `Adam Bernstein`  
 `2021-04-15` 
 
+**BME 639: Magnetic Resonance Imaging** <br> 
+*The University of Arizona*
+
 * __The goal is to illustrate diffusion tensor imaging data processing, including the calculation of mean diffusivity (MD) and fractional anisotropy (FA)__
 * __The matrix size for data set is $128 \times 128 \times 3 \times 130 $  (in-plane matrix size: 128x128; 3 slices; 130 images with obtained with diffusion encoding schemes shown in bval and bvec)__
 

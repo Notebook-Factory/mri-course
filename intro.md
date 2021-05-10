@@ -80,17 +80,3 @@ Alternatively, you can start a Binder session by clicking the badge below:
 
 ---
 </details>
-
-<details><summary><font><b>▶️YouTube guide </b> </font> </summary><br>
-
-Insert video...
-
---- 
-</details>
-
-<br>
-
-<p align="center">
-<img src="https://avatars3.githubusercontent.com/u/63861117?s=200&v=4" style="width:34px;"></img> <br>
-This repository is created by <a href="https://github.com/Notebook-Factory">Notebok-Factory</a>. 
-</p>
