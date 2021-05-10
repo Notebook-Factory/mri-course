@@ -9,6 +9,6 @@
     * RFPulse.ipynb has lab demonstrations
 
 
-Mahesh Keerthivasan
+**Mahesh Keerthivasan**
 <br>
 April 14, 2018
